@@ -1,0 +1,126 @@
+@import "tailwindcss" source(none);
+@source "../src";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-navy-deep: var(--navy-deep);
+  --color-navy: var(--navy);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #111827;
+  --card: #ffffff;
+  --card-foreground: #111827;
+  --primary: #0a0c1c;
+  --primary-foreground: #ffffff;
+  --accent: #c8972a;
+  --accent-foreground: #0a0c1c;
+  --muted: #f9fafb;
+  --muted-foreground: #6b7280;
+  --border: #e5e7eb;
+  --navy-deep: #0a0c1c;
+  --navy: #15182e;
+  --gold: #c8972a;
+  --gold-soft: #f0c040;
+}
+
+@layer base {
+  * { border-color: var(--color-border); box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: #fff;
+    color: #111827;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: "Playfair Display", Georgia, serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* ── Global keyframes ─────────────────────────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
+}
+
+/* ── Tailwind utilities ────────────────────────────────────────────── */
+@utility animate-fade-up  { animation: fade-up 0.8s ease-out both; }
+@utility animate-float    { animation: float-slow 5s ease-in-out infinite; }
+@utility font-display     { font-family: "Playfair Display", Georgia, serif; }
+@utility gradient-gold    { background: linear-gradient(135deg, #c8972a 0%, #f0c040 100%); }
+@utility shadow-gold      { box-shadow: 0 8px 32px -8px rgba(200,151,42,0.55); }
+@utility shadow-elegant   { box-shadow: 0 20px 48px -16px rgba(10,12,28,0.18); }
+@utility text-gradient-gold {
+  background: linear-gradient(135deg, #f0c040, #c8972a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ── WhatsApp floating button — shown on every page ── */
+@keyframes waBounce {
+  0%,100% { transform: translateY(0) scale(1); }
+  30%      { transform: translateY(-8px) scale(1.05); }
+  60%      { transform: translateY(-3px) scale(1.02); }
+}
+@keyframes waPing {
+  0%   { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+
+.wa-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25d366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 28px -4px rgba(37,211,102,0.6), 0 2px 8px rgba(0,0,0,0.25);
+  cursor: pointer;
+  text-decoration: none;
+  animation: waBounce 3s ease-in-out infinite;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.wa-float:hover {
+  box-shadow: 0 10px 36px -4px rgba(37,211,102,0.75), 0 4px 12px rgba(0,0,0,0.3);
+  transform: scale(1.08) !important;
+  animation-play-state: paused;
+}
+.wa-float svg { display: block; }
+
+/* ping ring */
+.wa-float::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(37,211,102,0.4);
+  animation: waPing 2.2s ease-out infinite;
+}

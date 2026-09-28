@@ -1,0 +1,2008 @@
+/* Google Fonts (Chakra Petch & Manrope) loaded via <link> in __root.tsx */
+
+/* =====================================================================
+   Devexa Man Power — Premium Light Theme with Gold Accent
+   Brand: Light #f8f7f4 dominant | Gold #c8972a accent | Dark #1a1a1a
+   Enhanced with rich animations, shadows, and modern card designs
+===================================================================== */
+
+.devexa-root {
+  --dmp-light: #f8f7f4;
+  --dmp-light-2: #f0efe8;
+  --dmp-light-3: #e8e7e0;
+  --dmp-gold: #c8972a;
+  --dmp-gold-2: #e8b83a;
+  --dmp-gold-3: #f0c848;
+  --dmp-gold-dim: rgba(200, 151, 42, 0.12);
+  --dmp-gold-glow: rgba(200, 151, 42, 0.2);
+  --dmp-ink: #1a1a1a;
+  --dmp-muted: #6b6b6b;
+  --dmp-muted-light: rgba(26, 26, 26, 0.5);
+  --dmp-bg: #f8f7f4;
+  --dmp-bg-2: #f0efe8;
+  --dmp-card: #ffffff;
+  --dmp-line: rgba(0, 0, 0, 0.06);
+  --dmp-card-border: rgba(0, 0, 0, 0.08);
+  --dmp-shadow: rgba(0, 0, 0, 0.08);
+  --dmp-shadow-hover: rgba(200, 151, 42, 0.15);
+
+  font-family: "Manrope", system-ui, sans-serif;
+  color: #1a1a1a;
+  background: var(--dmp-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+.devexa-root * {
+  box-sizing: border-box;
+}
+
+/* Smooth scroll for all anchor navigation */
+.devexa-root {
+  scroll-behavior: smooth;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+/* ================================================================== */
+/*  KEYFRAMES & SHARED ANIMATIONS                                      */
+/* ================================================================== */
+@keyframes devexa-float {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-28px) translateX(14px); }
+}
+@keyframes devexa-float-rev {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(24px) translateX(-16px); }
+}
+@keyframes devexa-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+@keyframes devexa-shimmer {
+  0% { transform: translateX(-150%) skewX(-20deg); }
+  100% { transform: translateX(250%) skewX(-20deg); }
+}
+@keyframes devexa-rainbow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes devexa-rise {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes devexa-pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(200, 151, 42, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(200, 151, 42, 0); }
+}
+@keyframes devexa-pulse-dot {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes devexa-progress-slide {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+@keyframes devexa-glow-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+@keyframes devexa-geo-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes devexa-scale-in {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+@keyframes devexa-slide-up {
+  from { transform: translateY(60px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes devexa-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes devexa-shine {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes devexa-card-enter {
+  0% { opacity: 0; transform: scale(0.9) translateY(20px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Scroll-triggered reveal animations                                 */
+/* ------------------------------------------------------------------ */
+.devexa-animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.devexa-animate-on-scroll.devexa-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Stagger delays via nth-child for children of reveal containers */
+.devexa-animate-on-scroll:nth-child(1) { transition-delay: 0.05s; }
+.devexa-animate-on-scroll:nth-child(2) { transition-delay: 0.12s; }
+.devexa-animate-on-scroll:nth-child(3) { transition-delay: 0.19s; }
+.devexa-animate-on-scroll:nth-child(4) { transition-delay: 0.26s; }
+.devexa-animate-on-scroll:nth-child(5) { transition-delay: 0.33s; }
+.devexa-animate-on-scroll:nth-child(6) { transition-delay: 0.4s; }
+.devexa-animate-on-scroll:nth-child(7) { transition-delay: 0.47s; }
+.devexa-animate-on-scroll:nth-child(8) { transition-delay: 0.54s; }
+.devexa-animate-on-scroll:nth-child(9) { transition-delay: 0.61s; }
+.devexa-animate-on-scroll:nth-child(10) { transition-delay: 0.68s; }
+.devexa-animate-on-scroll:nth-child(11) { transition-delay: 0.75s; }
+.devexa-animate-on-scroll:nth-child(12) { transition-delay: 0.82s; }
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .devexa-animate-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .devexa-hero-glow,
+  .devexa-float-dot,
+  .devexa-float-dot--rev,
+  .devexa-btn::before,
+  .devexa-testi-progress-bar,
+  .devexa-card-shine {
+    animation: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Floating decorative background dots                               */
+/* ------------------------------------------------------------------ */
+.devexa-float-dot {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.12;
+  background: radial-gradient(circle, rgba(200, 151, 42, 0.15), transparent 70%);
+  animation: devexa-float 9s ease-in-out infinite;
+}
+.devexa-float-dot--rev {
+  background: radial-gradient(circle, rgba(200, 151, 42, 0.1), transparent 70%);
+  animation: devexa-float-rev 11s ease-in-out infinite;
+}
+.devexa-float-dot--sm { width: 80px; height: 80px; }
+.devexa-float-dot--md { width: 140px; height: 140px; }
+.devexa-float-dot--lg { width: 220px; height: 220px; }
+
+/* ------------------------------------------------------------------ */
+/*  Layout utilities                                                   */
+/* ------------------------------------------------------------------ */
+.devexa-section {
+  padding: 100px 0;
+  position: relative;
+  background: var(--dmp-bg);
+}
+.devexa-section-divider {
+  position: relative;
+}
+.devexa-section-divider::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 70px;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(120% 100% at 50% 100%, var(--dmp-gold) 0%, transparent 60%);
+  -webkit-mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+  opacity: 0.08;
+}
+.devexa-divider-line {
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(200, 151, 42, 0.4), rgba(200, 151, 42, 0.3), rgba(200, 151, 42, 0.4), transparent);
+  position: relative;
+}
+.devexa-divider-line::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--dmp-gold);
+  box-shadow: 0 0 0 4px rgba(200, 151, 42, 0.12);
+}
+.devexa-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.devexa-section-head {
+  text-align: center;
+  margin: 0 auto 56px;
+  max-width: 680px;
+}
+.devexa-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--dmp-gold);
+  margin-bottom: 14px;
+}
+.devexa-label::before {
+  content: "";
+  width: 26px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--dmp-gold), var(--dmp-gold-2));
+}
+.devexa-label--light {
+  color: var(--dmp-gold-2);
+}
+.devexa-h2 {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: clamp(1.7rem, 3.4vw, 2.9rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin: 0 0 14px;
+  color: #1a1a1a;
+}
+.devexa-h2 span {
+  background: linear-gradient(135deg, var(--dmp-gold), var(--dmp-gold-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--dmp-gold);
+}
+.devexa-h2--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+.devexa-h2--light {
+  color: #1a1a1a;
+}
+.devexa-h2--light span {
+  background: linear-gradient(135deg, #1a1a1a, var(--dmp-gold-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.devexa-lead {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--dmp-muted);
+  margin: 0 auto;
+  max-width: 620px;
+}
+.devexa-lead--center {
+  text-align: center;
+}
+.devexa-lead--left {
+  margin-left: 0;
+  text-align: left;
+}
+.devexa-lead--light {
+  color: rgba(26, 26, 26, 0.6);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Buttons                                                            */
+/* ------------------------------------------------------------------ */
+.devexa-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-family: "Manrope", sans-serif;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              background 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  overflow: hidden;
+  isolation: isolate;
+}
+/* Shimmer/shine sweep across all CTA buttons on hover */
+.devexa-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: translateX(-150%) skewX(-20deg);
+  transition: none;
+  pointer-events: none;
+  z-index: 1;
+}
+.devexa-btn:hover::before {
+  animation: devexa-shimmer 0.9s ease;
+}
+.devexa-btn > * {
+  position: relative;
+  z-index: 2;
+}
+.devexa-btn:active {
+  transform: scale(0.95);
+}
+.devexa-btn-primary {
+  background: linear-gradient(135deg, var(--dmp-gold), var(--dmp-gold-2), var(--dmp-gold-3));
+  background-size: 200% 200%;
+  color: #ffffff;
+  box-shadow: 0 8px 30px -6px rgba(200, 151, 42, 0.4);
+}
+.devexa-btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 16px 40px -8px rgba(200, 151, 42, 0.6);
+  background-position: 100% 100%;
+}
+.devexa-btn-secondary {
+  background: transparent;
+  color: rgba(26, 26, 26, 0.82);
+  border: 2px solid rgba(26, 26, 26, 0.2);
+}
+.devexa-btn-secondary:hover {
+  background: rgba(200, 151, 42, 0.08);
+  border-color: var(--dmp-gold);
+  color: #1a1a1a;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px -8px rgba(200, 151, 42, 0.15);
+}
+.devexa-btn-ghost {
+  background: transparent;
+  color: rgba(26, 26, 26, 0.75);
+  border: 1.5px solid rgba(26, 26, 26, 0.15);
+}
+.devexa-btn-ghost:hover {
+  background: rgba(200, 151, 42, 0.08);
+  border-color: var(--dmp-gold);
+  color: #1a1a1a;
+  transform: translateY(-3px);
+}
+.devexa-btn-wa {
+  background: #25d366;
+  color: #ffffff;
+  margin-top: 8px;
+  box-shadow: 0 8px 25px -6px rgba(37, 211, 102, 0.4);
+}
+.devexa-btn-wa:hover {
+  filter: brightness(1.05);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px -8px rgba(37, 211, 102, 0.5);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Card grids & shared card bits                                      */
+/* ------------------------------------------------------------------ */
+.devexa-card-grid {
+  display: grid;
+  gap: 24px;
+}
+.devexa-card-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.devexa-card-grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+.devexa-card-title {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 8px;
+}
+.devexa-card-title--light {
+  color: #1a1a1a;
+}
+.devexa-card-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--dmp-muted);
+  margin: 0;
+}
+.devexa-card-desc--light {
+  color: rgba(26, 26, 26, 0.6);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Enhanced card designs with 3D tilt and shine effects              */
+/* ------------------------------------------------------------------ */
+.devexa-card-grid,
+.devexa-dash-grid,
+.devexa-price-grid {
+  perspective: 1200px;
+}
+
+/* Card shine effect */
+.devexa-card-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  background-size: 200% 200%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.devexa-card-shine--active {
+  opacity: 1;
+  animation: devexa-shine 2s ease-in-out infinite;
+}
+
+/* Shared gradient border-bottom that grows on card hover */
+.devexa-problem-card::after,
+.devexa-feature-card::after,
+.devexa-dash-card::after,
+.devexa-role-card::after,
+.devexa-industry-card::after,
+.devexa-report-card::after,
+.devexa-why-card::after,
+.devexa-security-card::after,
+.devexa-price-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0;
+  border-radius: 0 0 14px 14px;
+  background: linear-gradient(90deg, var(--dmp-gold), var(--dmp-gold-2), var(--dmp-gold-3));
+  background-size: 200% 200%;
+  transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+.devexa-problem-card:hover::after,
+.devexa-feature-card:hover::after,
+.devexa-dash-card:hover::after,
+.devexa-role-card:hover::after,
+.devexa-industry-card:hover::after,
+.devexa-report-card:hover::after,
+.devexa-why-card:hover::after,
+.devexa-security-card:hover::after,
+.devexa-price-card:hover::after {
+  height: 4px;
+  animation: devexa-rainbow 3s ease infinite;
+}
+.devexa-problem-card,
+.devexa-feature-card,
+.devexa-dash-card,
+.devexa-role-card,
+.devexa-industry-card,
+.devexa-report-card,
+.devexa-why-card,
+.devexa-security-card,
+.devexa-price-card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ================================================================== */
+/*  1. HERO                                                            */
+/* ================================================================== */
+.devexa-hero {
+  position: relative;
+  background: radial-gradient(140% 140% at 70% 0%, #e8e7e0 0%, var(--dmp-light) 45%, var(--dmp-light-2) 100%);
+  padding: 140px 0 100px;
+  overflow: hidden;
+  color: #1a1a1a;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.devexa-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(120% 100% at 50% 0%, #000 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(120% 100% at 50% 0%, #000 30%, transparent 75%);
+}
+.devexa-hero-glow {
+  position: absolute;
+  top: -180px;
+  right: -100px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(200, 151, 42, 0.12), transparent 65%);
+  filter: blur(40px);
+  pointer-events: none;
+  animation: devexa-glow-pulse 4s ease-in-out infinite;
+}
+.devexa-hero-inner {
+  position: relative;
+  text-align: center;
+  max-width: 920px;
+}
+.devexa-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 50px;
+  border: 1px solid rgba(200, 151, 42, 0.4);
+  background: rgba(200, 151, 42, 0.08);
+  color: var(--dmp-gold);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 26px;
+  backdrop-filter: blur(10px);
+}
+.devexa-hero-badge svg {
+  width: 14px;
+  height: 14px;
+}
+.devexa-hero-h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 900;
+  line-height: 1.04;
+  color: #1a1a1a;
+  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+  margin: 0 0 22px;
+}
+.devexa-hero-h1 span {
+  color: var(--dmp-gold);
+  font-style: italic;
+  position: relative;
+}
+.devexa-hero-h1 .devexa-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.9em;
+  margin-left: 6px;
+  background: var(--dmp-gold-2);
+  border-radius: 2px;
+  vertical-align: middle;
+  animation: devexa-blink 1s steps(1) infinite;
+}
+.devexa-hero-sub {
+  font-size: clamp(1rem, 1.5vw, 1.18rem);
+  line-height: 1.7;
+  color: rgba(26, 26, 26, 0.6);
+  max-width: 760px;
+  margin: 0 auto 38px;
+}
+.devexa-hero-cta {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
+}
+.devexa-hero-stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+.devexa-hero-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.75);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              background 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(10px);
+}
+.devexa-hero-stat:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(200, 151, 42, 0.5);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 25px -8px rgba(200, 151, 42, 0.15);
+}
+.devexa-hero-stat svg {
+  color: var(--dmp-gold);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-hero-stat:hover svg {
+  transform: scale(1.2) rotate(-6deg);
+}
+.devexa-counter-num {
+  color: var(--dmp-gold);
+  font-weight: 800;
+  font-size: 14px;
+}
+
+/* ================================================================== */
+/*  2. PROBLEMS                                                        */
+/* ================================================================== */
+.devexa-problems {
+  background: var(--dmp-bg);
+}
+.devexa-problem-card {
+  background: var(--dmp-card);
+  border: 1px solid var(--dmp-card-border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-problem-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(200, 151, 42, 0.08);
+  border-color: rgba(200, 151, 42, 0.3);
+}
+.devexa-problem-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(200, 151, 42, 0.12), rgba(200, 151, 42, 0.05));
+  color: var(--dmp-gold);
+  margin-bottom: 16px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-problem-card:hover .devexa-problem-icon {
+  transform: scale(1.1) rotate(-3deg);
+  background: linear-gradient(135deg, rgba(200, 151, 42, 0.2), rgba(200, 151, 42, 0.08));
+}
+
+/* ================================================================== */
+/*  3. SOLUTION                                                        */
+/* ================================================================== */
+.devexa-solution {
+  background: linear-gradient(180deg, var(--dmp-bg), var(--dmp-light-2));
+  text-align: center;
+}
+.devexa-solution-inner {
+  max-width: 820px;
+}
+.devexa-solution-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--dmp-light-2), var(--dmp-light-3));
+  color: #1a1a1a;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+  border: 1px solid rgba(200, 151, 42, 0.2);
+  box-shadow: 0 10px 26px -12px rgba(0, 0, 0, 0.1);
+}
+.devexa-solution-badge svg {
+  color: var(--dmp-gold-2);
+}
+.devexa-solution-pills {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 34px;
+}
+.devexa-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 18px;
+  border-radius: 50px;
+  background: var(--dmp-card);
+  border: 1px solid var(--dmp-card-border);
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(26, 26, 26, 0.85);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -8px rgba(200, 151, 42, 0.15);
+  border-color: rgba(200, 151, 42, 0.3);
+}
+.devexa-pill svg {
+  color: var(--dmp-gold);
+}
+
+/* ================================================================== */
+/*  4. FEATURES - FIXED GRID LAYOUT                                   */
+/* ================================================================== */
+.devexa-features {
+  background: var(--dmp-bg);
+}
+.devexa-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+.devexa-tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 50px;
+  background: var(--dmp-light-2);
+  border: 1px solid var(--dmp-card-border);
+  color: var(--dmp-muted);
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-tab::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--dmp-gold), var(--dmp-gold-2));
+  transform: translateX(-50%);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-tab--active::after {
+  width: 60%;
+}
+.devexa-tab:hover {
+  border-color: rgba(200, 151, 42, 0.4);
+  color: #1a1a1a;
+  transform: translateY(-2px);
+}
+.devexa-tab--active {
+  background: rgba(200, 151, 42, 0.12);
+  color: var(--dmp-gold);
+  border-color: rgba(200, 151, 42, 0.3);
+  box-shadow: 0 4px 15px -8px rgba(200, 151, 42, 0.15);
+}
+.devexa-tab--active svg {
+  color: var(--dmp-gold);
+}
+
+/* Feature grid - responsive with proper column count */
+.devexa-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+.devexa-feature-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: var(--dmp-card);
+  border: 1px solid var(--dmp-card-border);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: devexa-card-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.devexa-feature-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(200, 151, 42, 0.08);
+  border-color: rgba(200, 151, 42, 0.3);
+}
+.devexa-feature-check {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--dmp-gold), var(--dmp-gold-2));
+  color: #ffffff;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-feature-card:hover .devexa-feature-check {
+  transform: scale(1.1) rotate(10deg);
+}
+.devexa-feature-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(26, 26, 26, 0.9);
+}
+.devexa-feature-foot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 30px;
+  padding: 14px 24px;
+  border-radius: 50px;
+  background: var(--dmp-light-2);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dmp-muted);
+}
+.devexa-feature-foot svg {
+  color: var(--dmp-gold);
+}
+
+/* ================================================================== */
+/*  5. DASHBOARD                                                       */
+/* ================================================================== */
+.devexa-dashboard {
+  background: var(--dmp-bg);
+}
+.devexa-dash-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.devexa-dash-card {
+  background: var(--dmp-card);
+  border: 1px solid var(--dmp-card-border);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-dash-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(200, 151, 42, 0.08);
+  border-color: rgba(200, 151, 42, 0.3);
+}
+.devexa-dash-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 22px;
+  color: #ffffff;
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+.devexa-dash-top::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+  pointer-events: none;
+}
+.devexa-dash-top > * {
+  position: relative;
+  z-index: 1;
+}
+.devexa-dash-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--dmp-card-border);
+}
+.devexa-dash-metric {
+  background: var(--dmp-card);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-dash-card:hover .devexa-dash-metric {
+  background: rgba(200, 151, 42, 0.02);
+}
+.devexa-dash-metric-val {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dmp-gold);
+}
+.devexa-dash-metric-lbl {
+  font-size: 12px;
+  color: var(--dmp-muted);
+  font-weight: 500;
+}
+
+/* ================================================================== */
+/*  6. ROLES                                                           */
+/* ================================================================== */
+.devexa-roles {
+  background: var(--dmp-bg);
+}
+.devexa-role-card {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--dmp-card);
+  border: 1px solid var(--dmp-card-border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-role-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(200, 151, 42, 0.08);
+  border-color: rgba(200, 151, 42, 0.3);
+}
+.devexa-role-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--dmp-light-2), var(--dmp-light-3));
+  color: var(--dmp-gold);
+  border: 1px solid rgba(200, 151, 42, 0.12);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-role-card:hover .devexa-role-icon {
+  transform: scale(1.1) rotate(-3deg);
+  background: linear-gradient(135deg, rgba(200, 151, 42, 0.15), rgba(200, 151, 42, 0.05));
+}
+
+/* ================================================================== */
+/*  7. INDUSTRIES                                                      */
+/* ================================================================== */
+.devexa-industries {
+  background: var(--dmp-bg);
+}
+.devexa-industry-card {
+  background: var(--dmp-card);
+  border: 1px solid var(--dmp-card-border);
+  border-radius: 16px;
+  padding: 28px 22px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-industry-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(200, 151, 42, 0.08);
+  border-color: rgba(200, 151, 42, 0.3);
+}
+.devexa-industry-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 16px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(200, 151, 42, 0.10), rgba(200, 151, 42, 0.05));
+  color: var(--dmp-gold);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-industry-card:hover .devexa-industry-icon {
+  transform: scale(1.1) rotate(-5deg);
+  background: linear-gradient(135deg, rgba(200, 151, 42, 0.2), rgba(200, 151, 42, 0.08));
+  color: var(--dmp-gold-2);
+}
+
+/* ================================================================== */
+/*  8. REPORTS                                                         */
+/* ================================================================== */
+.devexa-reports {
+  background: var(--dmp-bg);
+}
+.devexa-report-card {
+  background: var(--dmp-card);
+  border: 1px solid var(--dmp-card-border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-report-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(200, 151, 42, 0.08);
+  border-color: rgba(200, 151, 42, 0.3);
+}
+.devexa-report-head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #1a1a1a;
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+.devexa-report-head svg {
+  color: var(--dmp-gold);
+}
+.devexa-bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 110px;
+  padding-top: 14px;
+}
+.devexa-bar {
+  flex: 1;
+  border-radius: 6px 6px 2px 2px;
+  background: linear-gradient(180deg, var(--dmp-gold-2), var(--dmp-gold));
+  min-height: 8px;
+  opacity: 0.7;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-report-card:hover .devexa-bar {
+  opacity: 1;
+}
+.devexa-report-card:hover .devexa-bar:nth-child(1) { height: 65%; }
+.devexa-report-card:hover .devexa-bar:nth-child(2) { height: 80%; }
+.devexa-report-card:hover .devexa-bar:nth-child(3) { height: 60%; }
+.devexa-report-card:hover .devexa-bar:nth-child(4) { height: 95%; }
+.devexa-report-card:hover .devexa-bar:nth-child(5) { height: 75%; }
+.devexa-report-card:hover .devexa-bar:nth-child(6) { height: 90%; }
+.devexa-report-card:hover .devexa-bar:nth-child(7) { height: 100%; }
+.devexa-bar:nth-child(even) {
+  background: linear-gradient(180deg, #e8b83a, #c8972a);
+}
+
+/* ================================================================== */
+/*  9. MOBILE                                                          */
+/* ================================================================== */
+.devexa-mobile {
+  background: linear-gradient(180deg, var(--dmp-bg), var(--dmp-light-2));
+}
+.devexa-mobile-layout {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 60px;
+  align-items: center;
+}
+.devexa-mobile-phone {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.devexa-mobile-phone img {
+  max-width: 280px;
+  width: 100%;
+  border-radius: 32px;
+  box-shadow: 0 40px 70px -30px rgba(0, 0, 0, 0.15);
+  border: 3px solid rgba(200, 151, 42, 0.15);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-mobile-phone img:hover {
+  transform: scale(1.02) translateY(-8px);
+  box-shadow: 0 50px 80px -30px rgba(200, 151, 42, 0.15);
+}
+.devexa-mobile-badge {
+  position: absolute;
+  bottom: -14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 18px;
+  border-radius: 50px;
+  background: var(--dmp-card);
+  color: #1a1a1a;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid rgba(200, 151, 42, 0.2);
+  box-shadow: 0 12px 26px -10px rgba(0, 0, 0, 0.08);
+}
+.devexa-mobile-badge svg {
+  color: var(--dmp-gold);
+}
+.devexa-mobile-content .devexa-label {
+  margin-bottom: 14px;
+}
+.devexa-mobile-content .devexa-h2 {
+  text-align: left;
+}
+.devexa-mobile-list {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.devexa-mobile-list li {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(26, 26, 26, 0.9);
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.4);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-mobile-list li:hover {
+  transform: translateX(4px);
+  background: rgba(255, 255, 255, 0.7);
+}
+.devexa-mobile-list svg {
+  color: var(--dmp-gold);
+  flex-shrink: 0;
+}
+
+/* ================================================================== */
+/*  10. WHY CHOOSE                                                     */
+/* ================================================================== */
+.devexa-why {
+  background: var(--dmp-bg);
+}
+.devexa-why-card {
+  background: var(--dmp-card);
+  border: 1px solid var(--dmp-card-border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-why-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(200, 151, 42, 0.08);
+  border-color: rgba(200, 151, 42, 0.3);
+}
+.devexa-why-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--dmp-gold), var(--dmp-gold-2));
+  color: #ffffff;
+  margin-bottom: 16px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-why-card:hover .devexa-why-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* ================================================================== */
+/*  11. SECURITY                                                       */
+/* ================================================================== */
+.devexa-security {
+  background: radial-gradient(140% 140% at 20% 0%, var(--dmp-light-3) 0%, var(--dmp-light) 50%, var(--dmp-light-2) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.devexa-security::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(100% 100% at 30% 0%, #000 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(100% 100% at 30% 0%, #000 20%, transparent 70%);
+}
+.devexa-security .devexa-container {
+  position: relative;
+}
+.devexa-security-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  padding: 28px 24px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              background 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-security-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(200, 151, 42, 0.4);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 20px 60px rgba(200, 151, 42, 0.08);
+}
+.devexa-security-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(135deg, #c8972a, #e8b83a, #f7c948, #e8b83a, #c8972a);
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: devexa-rainbow 6s ease infinite;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+.devexa-security-card:hover::before {
+  opacity: 0.6;
+}
+.devexa-security-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(200, 151, 42, 0.12);
+  color: var(--dmp-gold);
+  margin-bottom: 16px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-security-card:hover .devexa-security-icon {
+  transform: scale(1.1) rotate(-3deg);
+  background: rgba(200, 151, 42, 0.2);
+}
+
+/* ================================================================== */
+/*  12. TESTIMONIALS WITH CAROUSEL - FIXED                            */
+/* ================================================================== */
+.devexa-testimonials {
+  background: var(--dmp-bg);
+  overflow: hidden;
+}
+
+.devexa-testi-carousel {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 0 60px;
+  margin: 0 -20px;
+}
+
+.devexa-testi-track {
+  display: flex;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+  width: 100%;
+}
+
+.devexa-testi-card-wrapper {
+  flex: 0 0 33.333333%;
+  min-width: 33.333333%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.devexa-testi-card {
+  background: var(--dmp-card);
+  border: 1px solid var(--dmp-card-border);
+  border-radius: 18px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 280px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.5s ease;
+  opacity: 1;
+}
+
+.devexa-testi-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(200, 151, 42, 0.08);
+  border-color: rgba(200, 151, 42, 0.25);
+}
+
+.devexa-testi-quote {
+  color: var(--dmp-gold);
+  opacity: 0.3;
+  margin-bottom: 14px;
+  transition: opacity 0.3s ease;
+}
+.devexa-testi-card:hover .devexa-testi-quote {
+  opacity: 0.6;
+}
+
+.devexa-testi-text {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: rgba(26, 26, 26, 0.8);
+  margin: 0 0 18px;
+  flex: 1;
+}
+
+.devexa-stars {
+  display: flex;
+  gap: 3px;
+  color: var(--dmp-gold);
+  margin-bottom: 16px;
+}
+
+.devexa-testi-author {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.devexa-testi-author strong {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+
+.devexa-testi-author span {
+  font-size: 12.5px;
+  color: var(--dmp-muted);
+}
+
+/* Carousel Navigation Buttons */
+.devexa-testi-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--dmp-card);
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(10px);
+}
+
+.devexa-testi-nav:hover {
+  background: var(--dmp-gold);
+  color: #ffffff;
+  border-color: var(--dmp-gold);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 30px rgba(200, 151, 42, 0.25);
+}
+
+.devexa-testi-nav--prev {
+  left: 10px;
+}
+
+.devexa-testi-nav--next {
+  right: 10px;
+}
+
+/* Carousel Dots */
+.devexa-testi-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.devexa-testi-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0;
+  position: relative;
+}
+
+.devexa-testi-dot:hover {
+  border-color: var(--dmp-gold);
+  transform: scale(1.2);
+}
+
+.devexa-testi-dot--active {
+  background: var(--dmp-gold);
+  border-color: var(--dmp-gold);
+  transform: scale(1.2);
+}
+
+/* Auto-slide progress indicator on dots */
+.devexa-testi-dot--active::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 2px solid var(--dmp-gold);
+  animation: devexa-pulse-dot 5s ease-in-out infinite;
+}
+
+/* Progress bar for auto-slide */
+.devexa-testi-progress {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 3px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.devexa-testi-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--dmp-gold), var(--dmp-gold-2), var(--dmp-gold-3));
+  background-size: 200% 200%;
+  border-radius: 3px;
+  width: 0%;
+  animation: devexa-progress-slide 5s ease-in-out infinite,
+             devexa-rainbow 3s ease infinite;
+}
+
+/* ================================================================== */
+/*  13. PRICING                                                        */
+/* ================================================================== */
+.devexa-pricing {
+  background: var(--dmp-bg);
+}
+.devexa-price-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+.devexa-price-card {
+  position: relative;
+  background: var(--dmp-card);
+  border: 1px solid var(--dmp-card-border);
+  border-radius: 20px;
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-price-card:hover {
+  transform: perspective(1000px) rotateX(4deg) scale(1.03) translateY(-10px);
+  box-shadow: 0 30px 60px rgba(200, 151, 42, 0.10);
+  border-color: rgba(200, 151, 42, 0.3);
+}
+.devexa-price-card > * {
+  transform: translateZ(20px);
+}
+.devexa-price-card--popular {
+  border: 2px solid var(--dmp-gold);
+  box-shadow: 0 24px 50px -22px rgba(200, 151, 42, 0.15);
+}
+.devexa-price-card--popular:hover {
+  transform: perspective(1000px) rotateX(4deg) scale(1.04) translateY(-12px);
+  box-shadow: 0 34px 64px -22px rgba(200, 151, 42, 0.25);
+}
+.devexa-price-tag {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--dmp-gold), var(--dmp-gold-2), var(--dmp-gold-3));
+  background-size: 200% 200%;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 50px;
+  white-space: nowrap;
+  animation: devexa-rainbow 4s ease infinite;
+}
+.devexa-price-name {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 14px;
+}
+.devexa-price-amount {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+.devexa-price-val {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--dmp-gold);
+}
+.devexa-price-period {
+  font-size: 14px;
+  color: var(--dmp-muted);
+  font-weight: 600;
+}
+.devexa-price-cap {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dmp-gold);
+  margin-bottom: 22px;
+}
+.devexa-price-list {
+  list-style: none;
+  margin: 0 0 26px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+.devexa-price-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: rgba(26, 26, 26, 0.8);
+  padding: 4px 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-price-card:hover .devexa-price-list li {
+  transform: translateX(4px);
+}
+.devexa-price-list svg {
+  color: var(--dmp-gold);
+  flex-shrink: 0;
+}
+
+/* ================================================================== */
+/*  14. FAQ                                                            */
+/* ================================================================== */
+.devexa-faq {
+  background: var(--dmp-bg);
+}
+.devexa-faq-inner {
+  max-width: 820px;
+}
+.devexa-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.devexa-faq-item {
+  position: relative;
+  background: var(--dmp-card);
+  border: 1px solid var(--dmp-card-border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  transition: border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-faq-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--dmp-gold), var(--dmp-gold-2), var(--dmp-gold-3));
+  background-size: 100% 200%;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+.devexa-faq-item--open {
+  border-color: rgba(200, 151, 42, 0.3);
+  box-shadow: 0 12px 28px -18px rgba(0, 0, 0, 0.08);
+}
+.devexa-faq-item--open::before {
+  transform: scaleY(1);
+  animation: devexa-rainbow 4s ease infinite;
+}
+.devexa-faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  transition: color 0.3s ease;
+}
+.devexa-faq-q:hover {
+  color: var(--dmp-gold);
+}
+.devexa-faq-chevron {
+  flex-shrink: 0;
+  color: var(--dmp-gold);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-faq-item:hover .devexa-faq-chevron {
+  transform: rotate(90deg);
+}
+.devexa-faq-item--open .devexa-faq-chevron {
+  transform: rotate(180deg);
+}
+.devexa-faq-item--open:hover .devexa-faq-chevron {
+  transform: rotate(180deg) scale(1.1);
+}
+.devexa-faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-faq-item--open .devexa-faq-a {
+  max-height: 260px;
+}
+.devexa-faq-a p {
+  margin: 0;
+  padding: 0 22px 20px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--dmp-muted);
+}
+
+/* ================================================================== */
+/*  15. CTA                                                            */
+/* ================================================================== */
+.devexa-cta {
+  position: relative;
+  background: radial-gradient(140% 140% at 50% 80%, var(--dmp-light-3) 0%, var(--dmp-light) 50%, var(--dmp-light-2) 100%);
+  padding: 80px 0;
+  overflow: hidden;
+  text-align: center;
+  border-top: 1px solid rgba(200, 151, 42, 0.08);
+  border-bottom: 1px solid rgba(200, 151, 42, 0.08);
+}
+.devexa-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(100% 120% at 50% 50%, #000 10%, transparent 70%);
+  -webkit-mask-image: radial-gradient(100% 120% at 50% 50%, #000 10%, transparent 70%);
+}
+.devexa-cta-inner {
+  position: relative;
+}
+.devexa-cta-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+  font-weight: 900;
+  color: #1a1a1a;
+  margin: 0 0 14px;
+  letter-spacing: -0.01em;
+}
+.devexa-cta-sub {
+  font-size: 16px;
+  color: rgba(26, 26, 26, 0.6);
+  margin: 0 0 32px;
+}
+.devexa-cta-btns {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ================================================================== */
+/*  16. CONTACT                                                        */
+/* ================================================================== */
+.devexa-contact {
+  background: var(--dmp-bg);
+}
+.devexa-contact-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 48px;
+}
+.devexa-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.devexa-contact-info-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--dmp-card);
+  border: 1px solid var(--dmp-card-border);
+  border-radius: 14px;
+  padding: 18px 20px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-contact-info-item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 8px 25px -8px rgba(200, 151, 42, 0.08);
+  border-color: rgba(200, 151, 42, 0.2);
+}
+.devexa-contact-info-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--dmp-light-2), var(--dmp-light-3));
+  color: var(--dmp-gold);
+  border: 1px solid rgba(200, 151, 42, 0.12);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-contact-info-item:hover .devexa-contact-info-icon {
+  transform: scale(1.1) rotate(-3deg);
+}
+.devexa-contact-info-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dmp-muted);
+  margin-bottom: 3px;
+}
+.devexa-contact-info-value {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #1a1a1a;
+  word-break: break-word;
+}
+.devexa-contact-form {
+  background: var(--dmp-card);
+  border: 1px solid var(--dmp-card-border);
+  border-radius: 18px;
+  padding: 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+.devexa-form-success {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: rgba(200, 151, 42, 0.10);
+  border: 1px solid rgba(200, 151, 42, 0.2);
+  color: var(--dmp-gold);
+  font-size: 14px;
+  font-weight: 600;
+  animation: devexa-slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.devexa-input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--dmp-card-border);
+  background: var(--dmp-light-2);
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  color: #1a1a1a;
+  transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.devexa-input::placeholder {
+  color: var(--dmp-muted);
+}
+.devexa-input:focus {
+  outline: none;
+  border-color: var(--dmp-gold);
+  background: var(--dmp-card);
+  box-shadow: 0 0 0 4px rgba(200, 151, 42, 0.08);
+}
+.devexa-input:hover {
+  background: var(--dmp-card);
+  border-color: rgba(200, 151, 42, 0.2);
+}
+.devexa-textarea {
+  resize: vertical;
+  font-family: "Manrope", sans-serif;
+}
+.devexa-form-submit {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+/* ================================================================== */
+/*  RESPONSIVE                                                         */
+/* ================================================================== */
+@media (max-width: 1024px) {
+  .devexa-card-grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .devexa-card-grid--3,
+  .devexa-dash-grid,
+  .devexa-price-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .devexa-price-card--popular {
+    grid-column: span 2;
+  }
+  .devexa-testi-card-wrapper {
+    flex: 0 0 50%;
+    min-width: 50%;
+  }
+  .devexa-feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .devexa-section {
+    padding: 64px 0;
+  }
+  .devexa-container {
+    padding: 0 20px;
+  }
+  .devexa-card-grid--3,
+  .devexa-card-grid--4,
+  .devexa-dash-grid,
+  .devexa-price-grid {
+    grid-template-columns: 1fr;
+  }
+  .devexa-price-card--popular {
+    grid-column: auto;
+  }
+  .devexa-dash-metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+  .devexa-mobile-layout,
+  .devexa-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .devexa-form-row,
+  .devexa-mobile-list {
+    grid-template-columns: 1fr;
+  }
+  .devexa-hero {
+    padding: 80px 0 70px;
+    min-height: auto;
+  }
+  .devexa-hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .devexa-hero-cta .devexa-btn {
+    justify-content: center;
+  }
+  .devexa-mobile-phone img {
+    max-width: 220px;
+  }
+  .devexa-testi-card-wrapper {
+    flex: 0 0 100%;
+    min-width: 100%;
+  }
+  .devexa-testi-nav {
+    width: 40px;
+    height: 40px;
+  }
+  .devexa-testi-nav--prev {
+    left: 4px;
+  }
+  .devexa-testi-nav--next {
+    right: 4px;
+  }
+  .devexa-testi-progress {
+    width: 80px;
+  }
+  .devexa-contact-form {
+    padding: 24px;
+  }
+  .devexa-hero-h1 {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+  }
+  .devexa-hero-stat {
+    font-size: 8px;
+    padding: 8px 14px;
+  }
+  .devexa-feature-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .devexa-feature-card {
+    padding: 12px 14px;
+  }
+  .devexa-feature-text {
+    font-size: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .devexa-feature-grid {
+    grid-template-columns: 1fr;
+  }
+  .devexa-tabs {
+    gap: 6px;
+  }
+  .devexa-tab {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+}
